@@ -4,8 +4,8 @@ defmodule Rill.Mixfile do
   def project do
     [
       app: :rill,
-      version: File.read("VERSION") |> elem(1),
-      elixir: "~> 1.5",
+      version: "0.0.1",
+      elixir: "~> 1.6",
       start_permanent: Mix.env == :prod,
       deps: deps()
     ]
