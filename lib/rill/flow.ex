@@ -68,13 +68,22 @@ defmodule Rill.Flow do
     GenServer.cast(pid, build_msg(msg, to_flow))
   end
 
+  @doc """
+    equivalent to
+    set_timer(msg, delay, to_flow, id: msg, msg_filter: &(&1 == msg))
+  """
   def set_timer(msg, delay, to_flow) do
     set_timer(msg, delay, to_flow, id: msg, msg_filter: &(&1 == msg))
   end
 
+  @doc """
+    use opts[:id] as the key of this timer in process dictionary
+    use function opts[:msg_filter] as a way to extract timer from process dictionary, 
+    or you can just leave it empty to use the default msg_filter &(&1 == id) 
+  """
   def set_timer(msg, delay, to_flow, opts) when is_list(opts) do
     id = Keyword.get(opts, :id, msg)
-    msg_filter = Keyword.get(opts, :msg_filter, &(&1 == msg))
+    msg_filter = Keyword.get(opts, :msg_filter, &(&1 == id))
     cancel_timer(id, msg_filter, to_flow)
     timer = :erlang.send_after(delay, self(), {:timer, build_msg(msg, to_flow, delay: delay)})
     timers = Process.get(:timer, %{})
