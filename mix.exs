@@ -4,7 +4,7 @@ defmodule Rill.Mixfile do
   def project do
     [
       app: :rill,
-      version: "0.0.1",
+      version: "0.0.2",
       elixir: "~> 1.6",
       start_permanent: Mix.env == :prod,
       deps: deps()
@@ -23,18 +23,18 @@ defmodule Rill.Mixfile do
   defp deps do
     [
       # aws
-      {:ex_aws, "~> 2.0"},
+      {:ex_aws, "~> 2.1"},
       {:ex_aws_s3, "~> 2.0"},
       {:ex_aws_dynamo, "~> 2.0"},
-      {:poison, "~> 3.0"},
-      {:hackney, "~> 1.9"},
-      {:sweet_xml, "~> 0.6"},
+      {:poison, "~> 3.1"},
+      {:hackney, "~> 1.13"},
+      {:sweet_xml, "~> 0.6.5"},
 
       # json
-      {:json, "~> 1.0"},
+      {:json, "~> 1.2"},
 
       # webserver
-      {:cowboy, "~> 2.0.0"},
+      {:cowboy, "~> 2.4"},
 
       # releases
       {:distillery, "~> 1.5", runtime: false}
