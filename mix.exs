@@ -36,8 +36,6 @@ defmodule Rill.Mixfile do
       # webserver
       {:cowboy, "~> 2.4"},
 
-      # releases
-      {:distillery, "~> 1.5", runtime: false}
     ]
   end
 end
