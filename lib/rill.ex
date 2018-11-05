@@ -213,11 +213,8 @@ defmodule Rill do
       {:ok, state} ->
         flow.handle(opts, msg, state)
 
-      {:end, {:noreply, state}} ->
-        {:noreply, state}
-
-      {:end, {:reply, reply, state}} ->
-        {:reply, reply, state}
+      {:end, return} ->
+        return
     end
   end
 end
