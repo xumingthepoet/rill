@@ -28,7 +28,7 @@ defmodule Rill.Mixfile do
       {:ex_aws_dynamo, "~> 2.0"},
       {:poison, "~> 3.1"},
       {:sweet_xml, "~> 0.6.5"},
-      {:hackney, "~> 1.9"},
+      {:hackney, "~> 1.14"},
 
       # json
       {:json, "~> 1.2"},

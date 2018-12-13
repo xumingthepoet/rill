@@ -20,7 +20,7 @@ defmodule Rill.Supervisor do
         supervisor(supervisor_name, [server_name], restart: :permanent)
       end
 
-    child_tcp_opts = %{port: Keyword.get(options, :tcp_port), max_connections: 1_000_000}
+    child_tcp_opts = [{:port, Keyword.get(options, :tcp_port)}, {:max_connections, 1_000_000}]
 
     child_tcp =
       :ranch.child_spec(:rill_tcp, 100, :ranch_tcp, child_tcp_opts, Module.concat(app, tcp), [])
